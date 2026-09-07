@@ -1,24 +1,8 @@
 ```
-# Build artifacts
+# Build artifacts and distributions
 dist/
 build/
-assets/build/
-
-# Dependencies
-node_modules/
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Logs and temporary files
-*.log
-*.tmp
-
-# Editors
-.vscode/
-.idea/
+target/
 
 # Compressed files
 *.zip
@@ -30,4 +14,17 @@ node_modules/
 *.7z
 *.rar
 *.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
