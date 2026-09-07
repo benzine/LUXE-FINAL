@@ -3560,6 +3560,8 @@ export const Ic = {
   Monitor: ({ className, style }: IconProps) => (<svg viewBox="0 0 24 24" className={className} style={style} {...S}><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>),
   Tablet: ({ className, style }: IconProps) => (<svg viewBox="0 0 24 24" className={className} style={style} {...S}><rect x="4" y="2" width="16" height="20" rx="2" /><circle cx="12" cy="18" r="1" /></svg>),
   Smartphone: ({ className, style }: IconProps) => (<svg viewBox="0 0 24 24" className={className} style={style} {...S}><rect x="7" y="2" width="10" height="20" rx="2" /><circle cx="12" cy="18" r="1" /></svg>),
+  Undo: ({ className, style }: IconProps) => (<svg viewBox="0 0 24 24" className={className} style={style} {...S}><path d="M3 7v6h6" /><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" /></svg>),
+  Redo: ({ className, style }: IconProps) => (<svg viewBox="0 0 24 24" className={className} style={style} {...S}><path d="M21 7v6h-6" /><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" /></svg>),
 };
 
 /* ── scroll reveal ── */
