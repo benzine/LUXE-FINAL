@@ -21,7 +21,7 @@ function luxe_enqueue_app() {
 
 	/* The compiled application — uses index.css from assets/build/
 	   (includes the Atelier Console width fix). */
-	wp_enqueue_style( 'luxe-app', $uri . '/assets/build/index.css', array(), LUXE_VERSION );
+	wp_enqueue_style( 'luxe-app', $uri . '/assets/build/index-B-jhW4Dm.css', array(), LUXE_VERSION );
 
 	wp_enqueue_style(
 		'luxe-google-fonts',
@@ -38,7 +38,7 @@ function luxe_enqueue_app() {
 	   /assets/build/ directory via ES module imports. */
 	wp_enqueue_script(
 		'luxe-app',
-		$uri . '/assets/build/index-BDKRCmi6-patched.js',
+		$uri . '/assets/build/index-BQ6rGOyZ.js',
 		array(),
 		null,
 		true
@@ -78,7 +78,7 @@ add_filter( 'script_loader_tag', 'luxe_script_module_tag', 10, 2 );
  */
 function luxe_strip_script_version( $src ) {
 	if ( is_admin() ) { return $src; }
-	if ( false !== strpos( $src, 'assets/build/index-BDKRCmi6-patched.js' ) ) {
+	if ( false !== strpos( $src, 'assets/build/index-BQ6rGOyZ.js' ) ) {
 		$src = remove_query_arg( 'ver', $src );
 	}
 	return $src;
