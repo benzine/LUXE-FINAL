@@ -4556,11 +4556,12 @@ export const builderStore = {
   
   /* Isolation mode */
   enterIsolatedMode: (uid: string) => {
+    const sectionId = builderStore.slots?.find((s: any) => s.uid === uid)?.id || "";
     state = { 
       ...state, 
       isolatedSectionUid: uid,
       viewMode: "isolated",
-      selection: { type: "section", sectionUid: uid, sectionId: state.slots?.find(s => s.uid === uid)?.id || "" }
+      selection: { type: "section", sectionUid: uid, sectionId }
     };
     emit();
   },
