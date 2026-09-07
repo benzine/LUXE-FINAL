@@ -19,9 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 function luxe_enqueue_app() {
 	$uri = get_template_directory_uri();
 
-	/* The compiled application — uses index.css from assets/build/
-	   (includes the Atelier Console width fix). */
-	wp_enqueue_style( 'luxe-app', $uri . '/assets/build/index-B-jhW4Dm.css', array(), LUXE_VERSION );
+	/* The compiled application — uses latest build hashes from dist/assets/ */
+	wp_enqueue_style( 'luxe-app', $uri . '/assets/build/index-DldA9jtD.css', array(), LUXE_VERSION );
 
 	wp_enqueue_style(
 		'luxe-google-fonts',
@@ -30,15 +29,14 @@ function luxe_enqueue_app() {
 		null
 	);
 
-	/* Register the main app script. Version is intentionally null on the
+	/* Register the main app script with updated hash. Version is intentionally null on the
 	   script itself: Vite resolves relative chunk URLs against the main
 	   script's URL, and a ?ver= query string would make those relative
 	   resolutions ambiguous. The main script dynamically loads its own
-	   chunks (Console-Dk6VjiOx.js, vision_bundle, jszip) from the same
-	   /assets/build/ directory via ES module imports. */
+	   chunks (Console, vision, jszip) from the same /assets/build/ directory via ES module imports. */
 	wp_enqueue_script(
 		'luxe-app',
-		$uri . '/assets/build/index-BQ6rGOyZ.js',
+		$uri . '/assets/build/index-GxlFNHMK.js',
 		array(),
 		null,
 		true
@@ -57,8 +55,7 @@ function luxe_enqueue_app() {
 }
 add_action( 'wp_enqueue_scripts', 'luxe_enqueue_app' );
 
-/**
- * Force type="module" on the main app script tag.
+/** Force type="module" on the main app script tag.
  * The Vite build uses ES module syntax throughout (import/export) and
  * dynamically loads code-split chunks (Console, vision). Loading as a
  * classic script would cause "SyntaxError: export declarations may only
@@ -78,7 +75,7 @@ add_filter( 'script_loader_tag', 'luxe_script_module_tag', 10, 2 );
  */
 function luxe_strip_script_version( $src ) {
 	if ( is_admin() ) { return $src; }
-	if ( false !== strpos( $src, 'assets/build/index-BQ6rGOyZ.js' ) ) {
+	if ( false !== strpos( $src, 'assets/build/index-GxlFNHMK.js' ) ) {
 		$src = remove_query_arg( 'ver', $src );
 	}
 	return $src;

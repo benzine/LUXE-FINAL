@@ -1,15 +1,15 @@
 ```
 # Build artifacts
 dist/
-build/
-assets/build/
-
-# Compressed files
 *.zip
 
-# Temporary files
-*.tmp
+# Dependencies
+node_modules/
+vendor/
+
+# Logs and temp files
 *.log
+*.tmp
 
 # Environment
 .env
@@ -20,32 +20,7 @@ assets/build/
 .vscode/
 .idea/
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Node.js
-node_modules/
-
-# Compiled
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Cache
-.mypy_cache/
-.pytest_cache/
-.gradle/
-target/
+# OS generated files
+.DS_Store
+Thumbs.db
 ```
