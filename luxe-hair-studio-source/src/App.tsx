@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import Booking from "./components/Booking";
 import { Cursor, FloatingDock, Preloader } from "./components/Chrome";
 import Console from "./components/Console";
+import AtelierConsoleBuilder from "./components/AtelierConsoleBuilder";
 import SiteEnhancements from "./components/SiteEnhancements";
 import Consultation from "./components/Consultation";
 import Experience, { MarqueeRibbon } from "./components/Experience";
@@ -26,6 +27,7 @@ export default function App() {
   const [theme, toggleTheme] = useTheme();
   const [booting, setBooting] = useState(true);
   const [consoleOpen, setConsoleOpen] = useState(false);
+  const [builderMode, setBuilderMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [prefill, setPrefill] = useState<BookPrefill | null>(null);
   const cfg = useConfig();
@@ -42,10 +44,13 @@ export default function App() {
     return () => removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ⌘⇧A opens the Atelier Console */
+  /* ⌘⇧A opens the Atelier Console Builder */
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === "a") { e.preventDefault(); setConsoleOpen((o) => !o); }
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === "a") { 
+        e.preventDefault(); 
+        setBuilderMode(true); 
+      }
     };
     addEventListener("keydown", h);
     return () => removeEventListener("keydown", h);
@@ -106,6 +111,7 @@ export default function App() {
       {cfg.design.dockLeft && <SiteEnhancements />}
       <ToastHost />
       {consoleOpen && <Console onClose={() => setConsoleOpen(false)} />}
+      {builderMode && <AtelierConsoleBuilder onClose={() => setBuilderMode(false)} />}
     </div>
   );
 }
