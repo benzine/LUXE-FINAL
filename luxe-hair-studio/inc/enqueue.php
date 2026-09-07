@@ -36,7 +36,7 @@ function luxe_enqueue_app() {
 	   chunks (Console, vision, jszip) from the same /assets/build/ directory via ES module imports. */
 	wp_enqueue_script(
 		'luxe-app',
-		$uri . '/assets/build/index-nZoIdhs3.js',
+		$uri . '/assets/build/index-DT1u6Jqs.js',
 		array(),
 		null,
 		true
@@ -75,7 +75,7 @@ add_filter( 'script_loader_tag', 'luxe_script_module_tag', 10, 2 );
  */
 function luxe_strip_script_version( $src ) {
 	if ( is_admin() ) { return $src; }
-	if ( false !== strpos( $src, 'assets/build/index-nZoIdhs3.js' ) ) {
+	if ( false !== strpos( $src, 'assets/build/index-DT1u6Jqs.js' ) ) {
 		$src = remove_query_arg( 'ver', $src );
 	}
 	return $src;

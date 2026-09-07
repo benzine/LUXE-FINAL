@@ -1,39 +1,27 @@
 ```
 # Build artifacts
 dist/
-*.zip
+build/
+assets/build/
 
 # Dependencies
 node_modules/
-.venv/
-venv/
-__pycache__/
-
-# Editor/IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Logs
-*.log
 
 # Environment
 .env
 .env.local
 *.env.*
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
+# Logs and temporary files
+*.log
+*.tmp
 
-# System files
-.DS_Store
-Thumbs.db
+# Editors
+.vscode/
+.idea/
 
 # Compressed files
+*.zip
 *.gz
 *.tar
 *.tgz
@@ -42,17 +30,4 @@ Thumbs.db
 *.7z
 *.rar
 *.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
 ```
