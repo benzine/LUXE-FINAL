@@ -1,10 +1,58 @@
 ```
 # Build artifacts
+assets/build/
 dist/
+
+# Dependencies
+node_modules/
+
+# Compressed files
 *.zip
+
+# Logs and temp files
+*.log
+*.tmp
 
 # Environment
 .env
 .env.local
 *.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled and binary files
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.class
+
+# Package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+htmlcov/
+.coverage
+
+# Cache directories
+.cache/
+.mypy_cache/
+.pytest_cache/
+.nyc_output/
 ```
