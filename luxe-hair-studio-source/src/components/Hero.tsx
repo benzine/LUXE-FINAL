@@ -10,7 +10,11 @@ import { useI18n } from "../lib/i18n";
    shockwave, dim punch, shine on the incoming look.
    A "projector" intro auto-plays on load (blade draws → wordmark →
    slash into scene 0); scroll then continues the story seamlessly.
-   Fully scrubbed + reversible. Reduced motion → static poster. */
+   Fully scrubbed + reversible. Reduced motion → static poster.
+   
+   AUTO-ROTATE FEATURE: On initial load, the hero tagline auto-rotates
+   through stages at a gentle pace. Rotation stops immediately when the
+   user starts scrolling. */
 
 /* timeline pacing (in abstract units). HOLD = dwell on a look + its title
    card; TRANS = the cut itself. Kept so each cut is ~30% of a stage —
@@ -68,7 +72,11 @@ export default function Hero() {
   }, [stages, TOTAL]);
 
   /* single drive loop: intro tween + scroll mapping + smoothing +
-     ambient life (glow drift, shimmer, parallax) without extra renders */
+     ambient life (glow drift, shimmer, parallax) without extra renders.
+     
+     AUTO-ROTATE: After the projector intro completes, if the user hasn't
+     scrolled, we auto-rotate through each stage's hold period at a gentle
+     pace (~3.5s per stage). Rotation stops immediately on any scroll input. */
   useEffect(() => {
     if (prm) {
       setP(1 - OUTRO / TOTAL - 0.0001);
@@ -80,6 +88,8 @@ export default function Hero() {
     let introStart = -1;
     let introDone = false;
     let started = false;
+    let userHasScrolled = false;
+    let autoRotateStart = -1;
     const t0 = performance.now();
 
     const loop = (ts: number) => {
@@ -94,15 +104,35 @@ export default function Hero() {
         /* already mid-story (refresh) → skip the projector intro */
         introStart = scrollProg > 0.001 ? -2 : ts + 350;
       }
+      
+      /* Detect first scroll — this permanently disables auto-rotation */
+      if (!userHasScrolled && scrollProg > 0.001) {
+        userHasScrolled = true;
+      }
+      
       let introProg = introEndFrac;
       if (introStart >= 0 && !introDone) {
         const t = clamp((ts - introStart) / 2600);
         introProg = easeOutCubic(t) * introEndFrac;
         if (t >= 1) introDone = true;
       }
-      const userScrolled = scrollProg > 0.001;
+      
+      /* Auto-rotation logic: after intro completes and before user scrolls,
+         gently rotate through stages at ~3.5s per stage */
+      let autoTarget = introEndFrac;
+      if (!userHasScrolled && introDone) {
+        if (autoRotateStart < 0) autoRotateStart = ts;
+        const autoElapsed = (ts - autoRotateStart) / 1000; /* seconds */
+        const autoSpeed = 3.5; /* seconds per full stage (HOLD + TRANS) */
+        const maxAutoP = 1 - OUTRO / TOTAL - 0.0001; /* stop before outro */
+        autoTarget = Math.min(introEndFrac + (autoElapsed / autoSpeed) * (1 - introEndFrac), maxAutoP);
+      }
+      
       const mapped = introEndFrac + scrollProg * (1 - introEndFrac);
-      const target = !introDone && !userScrolled ? introProg : Math.max(mapped, introProg);
+      const target = !introDone && !userHasScrolled 
+        ? introProg 
+        : (userHasScrolled ? Math.max(mapped, introProg) : Math.max(autoTarget, introProg));
+      
       pCur += (target - pCur) * 0.09;
       if (Math.abs(target - pCur) < 0.0004) pCur = target;
       setP(pCur);
