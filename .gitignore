@@ -1,21 +1,22 @@
 ```
-# Build artifacts and compiled files
-boogy/
-*.js
-*.css
+# Build artifacts
+dist/
+build/
+assets/build/
+
+# Compressed files
 *.zip
-
-# Dependencies
-node_modules/
-
-# Logs and temp files
-*.log
-*.tmp
 
 # Environment
 .env
 .env.local
 *.env.*
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
 
 # Editors
 .vscode/

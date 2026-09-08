@@ -2609,7 +2609,7 @@ export default function Mirror({ onBook }: { onBook: (p: BookPrefill) => void })
                   <button key={m.id} onClick={() => { setCustom(null); setMuseId(m.id); }} data-cursor="hand"
                     className={`group relative h-24 w-20 overflow-hidden rounded-t-full rounded-b-lg border-2 transition-all ${museId === m.id && !custom ? "border-[#c9b037]" : "border-transparent opacity-70 hover:opacity-100"}`}>
                     <img src={m.image} alt={m.label} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                    <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b0808]/85 to-transparent px-1 pb-1 pt-4 text-center font-mono text-[8px] uppercase tracking-[0.08em] text-[#f5e6d3]">{m.label.split("·")[0]}</span>
+                    <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b0808]/85 to-transparent px-1 pb-1 pt-4 text-center font-mono text-[8px] uppercase tracking-[0.08em] text-[#f5e6d3]">{m.label ? m.label.split("·")[0] : ""}</span>
                   </button>
                 ))}
                 <button onClick={() => setCamOpen(true)} data-cursor="hand"
