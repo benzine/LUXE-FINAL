@@ -40,9 +40,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Infant:ital,wght@1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
     </noscript>
     <title>Luxe Hair Studio — Ultra-Premium Salon & Colour Atelier</title>
-    <script type="module" crossorigin src="/assets/index-B8rmlSef.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/jszip.min-B01sdLsw.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-yntiy7zg.css">
+    <script type="module" crossorigin src="<?php echo get_stylesheet_directory_uri(); ?>/assets/build/index-bAEZxYun.js"></script>
+    <link rel="modulepreload" crossorigin href="<?php echo get_stylesheet_directory_uri(); ?>/assets/build/jszip.min-B01sdLsw.js">
+    <link rel="stylesheet" crossorigin href="<?php echo get_stylesheet_directory_uri(); ?>/assets/build/index-DmDyAeHj.css">
   </head>
   <body>
     <div id="root"></div>
