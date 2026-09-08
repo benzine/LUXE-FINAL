@@ -1,0 +1,11 @@
+# Ensure JavaScript files are served with correct MIME type
+<FilesMatch "\.js$">
+    ForceType application/javascript
+</FilesMatch>
+
+<FilesMatch "\.css$">
+    ForceType text/css
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
