@@ -1,8 +1,23 @@
 ```
-# Build artifacts
-luxe-hair-studio/assets/build/
-luxe-hair-studio-source/dist/
-
-# Compressed files
+# Build artifacts and compiled files
+boogy/
+*.js
+*.css
 *.zip
+
+# Dependencies
+node_modules/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
 ```
