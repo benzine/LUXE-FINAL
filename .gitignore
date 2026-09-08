@@ -1,8 +1,7 @@
 ```
-# Build artifacts and distributions
-dist/
-build/
-target/
+# Build artifacts
+luxe-hair-studio/assets/build/
+luxe-hair-studio-source/dist/
 
 # Compressed files
 *.zip
@@ -27,53 +26,4 @@ target/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-
-# JavaScript build artifacts
-*.js.map
-*.min.js
-*.bundle.js
-
-# Temporary files
-*.tmp
-*.temp
-*.log
-
-# Environment files
-.env
-.env.local
-*.env.*
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Python artifacts (if applicable)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-
-# Node.js (if applicable)
-node_modules/
-
-# Virtual environments (if applicable)
-venv/
-.venv/
-.env/
-
-# Coverage reports (if applicable)
-coverage/
-htmlcov/
-.coverage
-
-# Testing (if applicable)
-.mypy_cache/
-.pytest_cache/
 ```
